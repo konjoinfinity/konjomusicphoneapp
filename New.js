@@ -20,22 +20,35 @@ class NewScreen extends React.Component {
       lyrics: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleTitleChange = this.handleTitleChange.bind(this);
+    this.handleAuthorChange = this.handleAuthorChange.bind(this);
+    this.handleNotesChange = this.handleNotesChange.bind(this);
+    this.handleLyricsChange = this.handleLyricsChange.bind(this);
   }
 
-  handleInputChange(event) {
-    const target = event.target;
-    const value = target.value;
-    const name = target.name;
+  handleTitleChange(title) {
+    this.setState({ title });
+  }
+  handleAuthorChange(author) {
+    this.setState({ author });
+  }
+  handleNotesChange(notes) {
+    this.setState({ notes });
+  }
+  handleLyricsChange(lyrics) {
+    this.setState({ lyrics });
+  }
 
-    this.setState({
-      [name]: value
+  handleSubmit() {
+    const data = this.state;
+    fetch("http://localhost:4000/songs", {
+      method: "POST",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(data)
     });
-  }
-
-  handleSubmit(event) {
-    console.log(this.state);
-    console.log(event);
+    this.props.navigation.navigate("Songs");
   }
 
   render() {
@@ -49,8 +62,9 @@ class NewScreen extends React.Component {
                 style={styles.textInput}
                 placeholder="Title"
                 name="title"
+                id="title"
                 onBlur={Keyboard.dismiss}
-                onChange={this.handleInputChange}
+                onChangeText={this.handleTitleChange}
               />
             </View>
             <View style={styles.inputContainer}>
@@ -58,8 +72,9 @@ class NewScreen extends React.Component {
                 style={styles.textInput}
                 placeholder="Author"
                 name="author"
+                id="author"
                 onBlur={Keyboard.dismiss}
-                onChange={this.handleInputChange}
+                onChangeText={this.handleAuthorChange}
               />
             </View>
             <View style={styles.inputContainer}>
@@ -67,8 +82,9 @@ class NewScreen extends React.Component {
                 style={styles.textInput}
                 placeholder="Notes"
                 name="notes"
+                id="notes"
                 onBlur={Keyboard.dismiss}
-                onChange={this.handleInputChange}
+                onChangeText={this.handleNotesChange}
               />
             </View>
             <View style={styles.inputContainer}>
@@ -76,8 +92,9 @@ class NewScreen extends React.Component {
                 style={styles.textInput}
                 placeholder="Lyrics"
                 name="lyrics"
+                id="lyrics"
                 onBlur={Keyboard.dismiss}
-                onChange={this.handleInputChange}
+                onChangeText={this.handleLyricsChange}
               />
             </View>
             <View style={styles.inputContainer}>
