@@ -14,11 +14,13 @@ class EditScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      id: "",
       title: "",
       author: "",
       notes: "",
       lyrics: ""
     };
+    this.componentDidMount = this.componentDidMount.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleTitleChange = this.handleTitleChange.bind(this);
     this.handleAuthorChange = this.handleAuthorChange.bind(this);
@@ -33,6 +35,7 @@ class EditScreen extends React.Component {
       .then(res => res.json())
       .then(res => {
         this.setState({
+          id: res._id,
           title: res.title,
           author: res.author,
           notes: res.notes,
@@ -56,14 +59,18 @@ class EditScreen extends React.Component {
 
   handleSubmit() {
     const data = this.state;
-    fetch("http://localhost:4000/songs", {
-      method: "POST",
+    fetch(`http://localhost:4000/songs/${this.state.id}`, {
+      method: "PUT",
       headers: {
         "Content-type": "application/json"
       },
       body: JSON.stringify(data)
-    });
-    this.props.navigation.navigate("Songs");
+    })
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        this.props.navigation.navigate("Songs");
+      });
   }
 
   render() {
@@ -79,7 +86,7 @@ class EditScreen extends React.Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder={this.state.title}
+                value={this.state.title}
                 name="title"
                 id="title"
                 onBlur={Keyboard.dismiss}
@@ -89,7 +96,7 @@ class EditScreen extends React.Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder={this.state.author}
+                value={this.state.author}
                 name="author"
                 id="author"
                 onBlur={Keyboard.dismiss}
@@ -99,7 +106,7 @@ class EditScreen extends React.Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder={this.state.notes}
+                value={this.state.notes}
                 name="notes"
                 id="notes"
                 onBlur={Keyboard.dismiss}
@@ -109,7 +116,7 @@ class EditScreen extends React.Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder={this.state.lyrics}
+                value={this.state.lyrics}
                 name="lyrics"
                 id="lyrics"
                 onBlur={Keyboard.dismiss}
@@ -121,7 +128,7 @@ class EditScreen extends React.Component {
                 style={styles.saveButton}
                 onPress={this.handleSubmit}
               >
-                <Text style={styles.saveButtonText}>Save</Text>
+                <Text style={styles.saveButtonText}>Update</Text>
               </TouchableOpacity>
             </View>
           </ScrollView>
