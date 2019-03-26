@@ -26,6 +26,21 @@ class EditScreen extends React.Component {
     this.handleLyricsChange = this.handleLyricsChange.bind(this);
   }
 
+  componentDidMount() {
+    fetch(
+      `http://localhost:4000/songs/${this.props.navigation.state.params.songId}`
+    )
+      .then(res => res.json())
+      .then(res => {
+        this.setState({
+          title: res.title,
+          author: res.author,
+          notes: res.notes,
+          lyrics: res.lyrics
+        });
+      });
+  }
+
   handleTitleChange(title) {
     this.setState({ title });
   }
@@ -64,7 +79,7 @@ class EditScreen extends React.Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder="Title"
+                placeholder={this.state.title}
                 name="title"
                 id="title"
                 onBlur={Keyboard.dismiss}
@@ -74,7 +89,7 @@ class EditScreen extends React.Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder="Author"
+                placeholder={this.state.author}
                 name="author"
                 id="author"
                 onBlur={Keyboard.dismiss}
@@ -84,7 +99,7 @@ class EditScreen extends React.Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder="Notes"
+                placeholder={this.state.notes}
                 name="notes"
                 id="notes"
                 onBlur={Keyboard.dismiss}
@@ -94,7 +109,7 @@ class EditScreen extends React.Component {
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
-                placeholder="Lyrics"
+                placeholder={this.state.lyrics}
                 name="lyrics"
                 id="lyrics"
                 onBlur={Keyboard.dismiss}

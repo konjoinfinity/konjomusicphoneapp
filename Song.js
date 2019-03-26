@@ -66,7 +66,11 @@ class SongScreen extends React.Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.editButton}
-            onPress={() => this.props.navigation.navigate("Edit")}
+            onPress={() =>
+              this.props.navigation.navigate("Edit", {
+                songId: `${this.state.song._id}`
+              })
+            }
           >
             <Text style={styles.editButtonText}>Edit Song</Text>
           </TouchableOpacity>
