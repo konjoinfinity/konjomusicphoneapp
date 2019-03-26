@@ -64,14 +64,18 @@ class SongScreen extends React.Component {
           >
             <Text style={styles.songButtonText}>Go to Songs</Text>
           </TouchableOpacity>
-          <View style={styles.inputContainer}>
-            <TouchableOpacity
-              style={styles.deleteButton}
-              onPress={this.deleteSong}
-            >
-              <Text style={styles.deleteButtonText}>Delete Song</Text>
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            style={styles.editButton}
+            onPress={() => this.props.navigation.navigate("Edit")}
+          >
+            <Text style={styles.editButtonText}>Edit Song</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.deleteButton}
+            onPress={this.deleteSong}
+          >
+            <Text style={styles.deleteButtonText}>Delete Song</Text>
+          </TouchableOpacity>
         </ScrollView>
       </View>
     );
@@ -79,9 +83,6 @@ class SongScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    paddingTop: 15
-  },
   deleteButton: {
     borderWidth: 1,
     borderColor: "#FF1717",
@@ -110,6 +111,18 @@ const styles = StyleSheet.create({
     flex: 2,
     alignItems: "center",
     justifyContent: "center"
+  },
+  editButton: {
+    borderWidth: 1,
+    borderColor: "#FFD517",
+    backgroundColor: "#FFD517",
+    padding: 15,
+    margin: 5
+  },
+  editButtonText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    textAlign: "center"
   }
 });
 

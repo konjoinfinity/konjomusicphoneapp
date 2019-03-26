@@ -12,6 +12,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 import SongsScreen from "./Songs";
 import SongScreen from "./Song";
 import NewScreen from "./New";
+import EditScreen from "./Edit";
 
 class HomeScreen extends React.Component {
   render() {
@@ -72,7 +73,8 @@ const RootStack = createStackNavigator(
     Home: HomeScreen,
     Songs: SongsScreen,
     Song: SongScreen,
-    New: NewScreen
+    New: NewScreen,
+    Edit: EditScreen
   },
   {
     initialRouteName: "Home"
