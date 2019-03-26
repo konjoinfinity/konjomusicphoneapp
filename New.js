@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  Button,
+  Image,
   StyleSheet,
   Text,
   View,
@@ -54,6 +54,10 @@ class NewScreen extends React.Component {
   render() {
     return (
       <View style={styles.container}>
+        <Image
+          style={{ height: 100, width: 200 }}
+          source={require("./logo.png")}
+        />
         <View>
           <Text style={styles.header}>New Song</Text>
           <ScrollView>
@@ -115,8 +119,7 @@ class NewScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 45,
-    backgroundColor: "#F5FCFF"
+    paddingTop: 45
   },
   header: {
     fontSize: 25,

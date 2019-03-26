@@ -22,18 +22,50 @@ class HomeScreen extends React.Component {
           source={require("./logo.png")}
         />
         <Text style={{ fontSize: 50 }}>Music</Text>
-        <Button
-          title="Go to Songs"
+
+        <TouchableOpacity
+          style={styles.songButton}
           onPress={() => this.props.navigation.navigate("Songs")}
-        />
-        <Button
-          title="New Song"
+        >
+          <Text style={styles.songButtonText}>Go to Songs</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={styles.newButton}
           onPress={() => this.props.navigation.navigate("New")}
-        />
+        >
+          <Text style={styles.newButtonText}>New Song</Text>
+        </TouchableOpacity>
       </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  songButton: {
+    borderWidth: 1,
+    borderColor: "#007BFF",
+    backgroundColor: "#007BFF",
+    padding: 15,
+    margin: 5
+  },
+  songButtonText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    textAlign: "center"
+  },
+  newButton: {
+    borderWidth: 1,
+    borderColor: "#12C16D",
+    backgroundColor: "#12C16D",
+    padding: 15,
+    margin: 5
+  },
+  newButtonText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    textAlign: "center"
+  }
+});
 
 const RootStack = createStackNavigator(
   {

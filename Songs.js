@@ -15,9 +15,19 @@ class SongsScreen extends React.Component {
     this.state = {
       songs: ""
     };
+    this.getSongs = this.getSongs.bind(this);
   }
 
   componentDidMount() {
+    fetch("http://localhost:4000/songs")
+      .then(res => res.json())
+      .then(res => {
+        this.setState({ songs: res });
+      });
+    this.getSongs();
+  }
+
+  getSongs() {
     fetch("http://localhost:4000/songs")
       .then(res => res.json())
       .then(res => {
@@ -30,23 +40,52 @@ class SongsScreen extends React.Component {
     this.state.songs &&
       (songs = this.state.songs.map((song, id) => {
         return (
-          <Button
+          <TouchableOpacity
+            style={styles.songButton}
             key={id}
-            title={song.title}
             onPress={() =>
               this.props.navigation.navigate("Song", { songId: `${song._id}` })
             }
-          />
+          >
+            <Text style={styles.songButtonText}>{song.title}</Text>
+          </TouchableOpacity>
         );
       }));
     return (
-      <ScrollView>
-        <Text style={{ fontSize: 50, justifyContent: "center", padding: 20 }}>
-          Songs Screen
-        </Text>
-        {songs}
-      </ScrollView>
+      <View style={styles.songs}>
+        <ScrollView>
+          <Image
+            style={{ height: 100, width: 200 }}
+            source={require("./logo.png")}
+          />
+          <Text style={{ fontSize: 50, justifyContent: "center", padding: 20 }}>
+            Songs
+          </Text>
+          {songs}
+        </ScrollView>
+      </View>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  songButton: {
+    borderWidth: 1,
+    borderColor: "#12C16D",
+    backgroundColor: "#12C16D",
+    padding: 15,
+    margin: 5
+  },
+  songButtonText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    textAlign: "center"
+  },
+  songs: {
+    flex: 2,
+    alignItems: "center",
+    justifyContent: "center"
+  }
+});
+
 export default SongsScreen;
