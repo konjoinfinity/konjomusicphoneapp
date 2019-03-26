@@ -39,6 +39,15 @@ class SongScreen extends React.Component {
   }
 
   render() {
+    let commentlist;
+    this.state.song &&
+      (commentlist = this.state.song.comments.map((comment, id) => {
+        return (
+          <Text key={id} style={{ fontSize: 40, padding: 20 }}>
+            {comment.text}
+          </Text>
+        );
+      }));
     return (
       <View style={styles.songs}>
         <ScrollView>
@@ -80,6 +89,7 @@ class SongScreen extends React.Component {
           >
             <Text style={styles.deleteButtonText}>Delete Song</Text>
           </TouchableOpacity>
+          {commentlist}
         </ScrollView>
       </View>
     );
