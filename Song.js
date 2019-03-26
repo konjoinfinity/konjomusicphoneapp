@@ -21,7 +21,9 @@ class SongScreen extends React.Component {
 
   componentDidMount() {
     fetch(
-      `http://localhost:4000/songs/${this.props.navigation.state.params.songId}`
+      `http://konjomusicbackend.herokuapp.com/songs/${
+        this.props.navigation.state.params.songId
+      }`
     )
       .then(res => res.json())
       .then(res => {
@@ -30,9 +32,12 @@ class SongScreen extends React.Component {
   }
 
   deleteSong() {
-    fetch(`http://localhost:4000/songs/${this.state.song._id}`, {
-      method: "DELETE"
-    })
+    fetch(
+      `http://konjomusicbackend.herokuapp.com/songs/${this.state.song._id}`,
+      {
+        method: "DELETE"
+      }
+    )
       .then(res => res.json())
       .then(res => console.log(res))
       .then(this.props.navigation.navigate("Songs"));
@@ -43,9 +48,9 @@ class SongScreen extends React.Component {
     this.state.song &&
       (commentlist = this.state.song.comments.map((comment, id) => {
         return (
-          <Text key={id} style={{ fontSize: 40, padding: 20 }}>
-            {comment.text}
-          </Text>
+          <TouchableOpacity key={id} style={styles.comment}>
+            <Text style={{ fontSize: 40, padding: 20 }}>{comment.text}</Text>
+          </TouchableOpacity>
         );
       }));
     return (
@@ -89,6 +94,7 @@ class SongScreen extends React.Component {
           >
             <Text style={styles.deleteButtonText}>Delete Song</Text>
           </TouchableOpacity>
+          <Text style={{ fontSize: 40, padding: 20 }}>Comments</Text>
           {commentlist}
         </ScrollView>
       </View>
@@ -137,6 +143,13 @@ const styles = StyleSheet.create({
     color: "#FFFFFF",
     fontSize: 20,
     textAlign: "center"
+  },
+  comment: {
+    borderWidth: 1,
+    borderColor: "#FFB944",
+    backgroundColor: "#FFB944",
+    padding: 15,
+    margin: 5
   }
 });
 

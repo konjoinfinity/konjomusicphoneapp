@@ -30,7 +30,9 @@ class EditScreen extends React.Component {
 
   componentDidMount() {
     fetch(
-      `http://localhost:4000/songs/${this.props.navigation.state.params.songId}`
+      `http://konjomusicbackend.herokuapp.com/songs/${
+        this.props.navigation.state.params.songId
+      }`
     )
       .then(res => res.json())
       .then(res => {
@@ -59,7 +61,7 @@ class EditScreen extends React.Component {
 
   handleSubmit() {
     const data = this.state;
-    fetch(`http://localhost:4000/songs/${this.state.id}`, {
+    fetch(`http://konjomusicbackend.herokuapp.com/songs/${this.state.id}`, {
       method: "PUT",
       headers: {
         "Content-type": "application/json"

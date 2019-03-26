@@ -19,7 +19,7 @@ class SongsScreen extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:4000/songs")
+    fetch("http://konjomusicbackend.herokuapp.com/songs")
       .then(res => res.json())
       .then(res => {
         this.setState({ songs: res });
@@ -28,7 +28,7 @@ class SongsScreen extends React.Component {
   }
 
   getSongs() {
-    fetch("http://localhost:4000/songs")
+    fetch("http://konjomusicbackend.herokuapp.com/songs")
       .then(res => res.json())
       .then(res => {
         this.setState({ songs: res });

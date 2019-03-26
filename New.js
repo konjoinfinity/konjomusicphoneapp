@@ -41,7 +41,7 @@ class NewScreen extends React.Component {
 
   handleSubmit() {
     const data = this.state;
-    fetch("http://localhost:4000/songs", {
+    fetch("http://konjomusicbackend.herokuapp.com/songs", {
       method: "POST",
       headers: {
         "Content-type": "application/json"
