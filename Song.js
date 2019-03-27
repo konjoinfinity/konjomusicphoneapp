@@ -1,6 +1,8 @@
 import React from "react";
 import {
   Button,
+  TextInput,
+  Keyboard,
   View,
   Text,
   Image,
@@ -13,7 +15,8 @@ class SongScreen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      song: ""
+      song: "",
+      comment: ""
     };
     this.componentDidMount = this.componentDidMount.bind(this);
     this.deleteSong = this.deleteSong.bind(this);
@@ -94,6 +97,23 @@ class SongScreen extends React.Component {
           >
             <Text style={styles.deleteButtonText}>Delete Song</Text>
           </TouchableOpacity>
+          <View style={styles.inputContainer}>
+            <TextInput
+              style={styles.textInput}
+              name="comment"
+              id="comment"
+              onBlur={Keyboard.dismiss}
+              onChangeText={this.handleCommentChange}
+            />
+          </View>
+          <View style={styles.inputContainer}>
+            <TouchableOpacity
+              style={styles.saveButton}
+              onPress={this.handleComment}
+            >
+              <Text style={styles.saveButtonText}>Add Comment</Text>
+            </TouchableOpacity>
+          </View>
           <Text style={{ fontSize: 40, padding: 20 }}>Comments</Text>
           {commentlist}
         </ScrollView>
@@ -103,6 +123,18 @@ class SongScreen extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  inputContainer: {
+    paddingTop: 15
+  },
+  textInput: {
+    borderColor: "#CCCCCC",
+    borderTopWidth: 1,
+    borderBottomWidth: 1,
+    height: 50,
+    fontSize: 25,
+    paddingLeft: 20,
+    paddingRight: 20
+  },
   deleteButton: {
     borderWidth: 1,
     borderColor: "#FF1717",
@@ -150,6 +182,18 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFB944",
     padding: 15,
     margin: 5
+  },
+  saveButton: {
+    borderWidth: 1,
+    borderColor: "#12C16D",
+    backgroundColor: "#12C16D",
+    padding: 15,
+    margin: 5
+  },
+  saveButtonText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    textAlign: "center"
   }
 });
 
