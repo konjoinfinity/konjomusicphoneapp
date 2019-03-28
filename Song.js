@@ -10,6 +10,7 @@ import {
   StyleSheet,
   TouchableOpacity
 } from "react-native";
+import { Card } from "react-native-elements";
 
 class SongScreen extends React.Component {
   constructor(props) {
@@ -57,7 +58,7 @@ class SongScreen extends React.Component {
     )
       .then(res => res.json())
       .then(res => console.log(res))
-      .then(this.props.navigation.navigate("Songs"));
+      .then(this.props.navigation.navigate("Home"));
   }
 
   deleteComment(e) {
@@ -125,18 +126,26 @@ class SongScreen extends React.Component {
             style={{ height: 100, width: 200 }}
             source={require("./logo.png")}
           />
-          <Text style={{ fontSize: 50, padding: 20 }}>
-            Title - {this.state.song.title}
-          </Text>
-          <Text style={{ fontSize: 45, padding: 20 }}>
-            Author - {this.state.song.author}
-          </Text>
-          <Text style={{ fontSize: 40, padding: 20 }}>
-            Notes - {this.state.song.notes}
-          </Text>
-          <Text style={{ fontSize: 40, padding: 20 }}>
-            Lyrics - {this.state.song.lyrics}
-          </Text>
+          <Card>
+            <Text style={{ fontSize: 50, padding: 20 }}>
+              Title - {this.state.song.title}
+            </Text>
+          </Card>
+          <Card>
+            <Text style={{ fontSize: 45, padding: 20 }}>
+              Author - {this.state.song.author}
+            </Text>
+          </Card>
+          <Card>
+            <Text style={{ fontSize: 40, padding: 20 }}>
+              Notes - {this.state.song.notes}
+            </Text>
+          </Card>
+          <Card>
+            <Text style={{ fontSize: 40, padding: 20 }}>
+              Lyrics - {this.state.song.lyrics}
+            </Text>
+          </Card>
           <TouchableOpacity
             style={styles.songButton}
             onPress={() => this.props.navigation.navigate("Songs")}
@@ -159,25 +168,27 @@ class SongScreen extends React.Component {
           >
             <Text style={styles.deleteButtonText}>Delete Song</Text>
           </TouchableOpacity>
-          <View style={styles.inputContainer}>
-            <TextInput
-              style={styles.textInput}
-              name="comment"
-              id="comment"
-              onBlur={Keyboard.dismiss}
-              onChangeText={this.handleCommentChange}
-            />
-          </View>
-          <View style={styles.inputContainer}>
-            <TouchableOpacity
-              style={styles.saveButton}
-              onPress={this.handleComment}
-            >
-              <Text style={styles.saveButtonText}>Add Comment</Text>
-            </TouchableOpacity>
-          </View>
+          <Card>
+            <View style={styles.inputContainer}>
+              <TextInput
+                style={styles.textInput}
+                name="comment"
+                id="comment"
+                onBlur={Keyboard.dismiss}
+                onChangeText={this.handleCommentChange}
+              />
+            </View>
+            <View style={styles.inputContainer}>
+              <TouchableOpacity
+                style={styles.saveButton}
+                onPress={this.handleComment}
+              >
+                <Text style={styles.saveButtonText}>Add Comment</Text>
+              </TouchableOpacity>
+            </View>
+          </Card>
           <Text style={{ fontSize: 40, padding: 20 }}>Comments</Text>
-          {commentlist}
+          <Card>{commentlist}</Card>
         </ScrollView>
       </View>
     );
@@ -190,8 +201,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderColor: "#CCCCCC",
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    borderWidth: 1,
     height: 50,
     fontSize: 25,
     paddingLeft: 20,

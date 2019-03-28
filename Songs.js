@@ -24,7 +24,6 @@ class SongsScreen extends React.Component {
       .then(res => {
         this.setState({ songs: res });
       });
-    this.getSongs();
   }
 
   getSongs() {
