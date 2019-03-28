@@ -60,8 +60,9 @@ class SongScreen extends React.Component {
       .then(this.props.navigation.navigate("Songs"));
   }
 
-  deleteComment(id) {
-    const data = { body: id };
+  deleteComment(e) {
+    console.log(e);
+    const data = { body: e };
     fetch(
       `http://konjomusicbackend.herokuapp.com/songs/${
         this.state.song._id
@@ -106,19 +107,19 @@ class SongScreen extends React.Component {
     let commentlist;
     this.state.song &&
       (commentlist = this.state.song.comments.map((comment, id) => {
+        console.log(comment._id);
         return (
           <TouchableOpacity key={id} style={styles.comment}>
             <Text style={{ fontSize: 40, padding: 20 }}>{comment.text}</Text>
             <Button
               title="Delete"
-              id={comment._id}
-              ref={ref => (this.button = ref)}
-              onPress={() => this.deleteComment(this.button.props.id)}
+              onPress={() => this.deleteComment(`${comment._id}`)}
               style={styles.deleteButton}
             />
           </TouchableOpacity>
         );
       }));
+
     return (
       <View style={styles.songs}>
         <ScrollView>
