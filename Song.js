@@ -146,28 +146,30 @@ class SongScreen extends React.Component {
               Lyrics - {this.state.song.lyrics}
             </Text>
           </Card>
-          <TouchableOpacity
-            style={styles.songButton}
-            onPress={() => this.props.navigation.navigate("Songs")}
-          >
-            <Text style={styles.songButtonText}>Go to Songs</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.editButton}
-            onPress={() =>
-              this.props.navigation.navigate("Edit", {
-                songId: `${this.state.song._id}`
-              })
-            }
-          >
-            <Text style={styles.editButtonText}>Edit Song</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={styles.deleteButton}
-            onPress={this.deleteSong}
-          >
-            <Text style={styles.deleteButtonText}>Delete Song</Text>
-          </TouchableOpacity>
+          <Card>
+            <TouchableOpacity
+              style={styles.songButton}
+              onPress={() => this.props.navigation.navigate("Songs")}
+            >
+              <Text style={styles.songButtonText}>Go to Songs</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.editButton}
+              onPress={() =>
+                this.props.navigation.navigate("Edit", {
+                  songId: `${this.state.song._id}`
+                })
+              }
+            >
+              <Text style={styles.editButtonText}>Edit Song</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.deleteButton}
+              onPress={this.deleteSong}
+            >
+              <Text style={styles.deleteButtonText}>Delete Song</Text>
+            </TouchableOpacity>
+          </Card>
           <Card>
             <View style={styles.inputContainer}>
               <TextInput

@@ -9,6 +9,7 @@ import {
   Keyboard,
   TouchableOpacity
 } from "react-native";
+import { Card } from "react-native-elements";
 
 class NewScreen extends React.Component {
   constructor(props) {
@@ -60,55 +61,57 @@ class NewScreen extends React.Component {
             source={require("./logo.png")}
           />
           <View>
-            <Text style={styles.header}>New Song</Text>
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Title"
-                name="title"
-                id="title"
-                onBlur={Keyboard.dismiss}
-                onChangeText={this.handleTitleChange}
-              />
-            </View>
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Author"
-                name="author"
-                id="author"
-                onBlur={Keyboard.dismiss}
-                onChangeText={this.handleAuthorChange}
-              />
-            </View>
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Notes"
-                name="notes"
-                id="notes"
-                onBlur={Keyboard.dismiss}
-                onChangeText={this.handleNotesChange}
-              />
-            </View>
-            <View style={styles.inputContainer}>
-              <TextInput
-                style={styles.textInput}
-                placeholder="Lyrics"
-                name="lyrics"
-                id="lyrics"
-                onBlur={Keyboard.dismiss}
-                onChangeText={this.handleLyricsChange}
-              />
-            </View>
-            <View style={styles.inputContainer}>
-              <TouchableOpacity
-                style={styles.saveButton}
-                onPress={this.handleSubmit}
-              >
-                <Text style={styles.saveButtonText}>Save</Text>
-              </TouchableOpacity>
-            </View>
+            <Card>
+              <Text style={styles.header}>New Song</Text>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Title"
+                  name="title"
+                  id="title"
+                  onBlur={Keyboard.dismiss}
+                  onChangeText={this.handleTitleChange}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Author"
+                  name="author"
+                  id="author"
+                  onBlur={Keyboard.dismiss}
+                  onChangeText={this.handleAuthorChange}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Notes"
+                  name="notes"
+                  id="notes"
+                  onBlur={Keyboard.dismiss}
+                  onChangeText={this.handleNotesChange}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <TextInput
+                  style={styles.textInput}
+                  placeholder="Lyrics"
+                  name="lyrics"
+                  id="lyrics"
+                  onBlur={Keyboard.dismiss}
+                  onChangeText={this.handleLyricsChange}
+                />
+              </View>
+              <View style={styles.inputContainer}>
+                <TouchableOpacity
+                  style={styles.saveButton}
+                  onPress={this.handleSubmit}
+                >
+                  <Text style={styles.saveButtonText}>Save</Text>
+                </TouchableOpacity>
+              </View>
+            </Card>
           </View>
         </View>
       </ScrollView>
@@ -132,8 +135,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     borderColor: "#CCCCCC",
-    borderTopWidth: 1,
-    borderBottomWidth: 1,
+    borderWidth: 1,
     height: 50,
     fontSize: 25,
     paddingLeft: 20,
