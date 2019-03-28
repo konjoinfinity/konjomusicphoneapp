@@ -107,7 +107,6 @@ class SongScreen extends React.Component {
     let commentlist;
     this.state.song &&
       (commentlist = this.state.song.comments.map((comment, id) => {
-        console.log(comment._id);
         return (
           <TouchableOpacity key={id} style={styles.comment}>
             <Text style={{ fontSize: 40, padding: 20 }}>{comment.text}</Text>
@@ -119,7 +118,6 @@ class SongScreen extends React.Component {
           </TouchableOpacity>
         );
       }));
-
     return (
       <View style={styles.songs}>
         <ScrollView>
