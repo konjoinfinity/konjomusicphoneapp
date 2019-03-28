@@ -53,14 +53,14 @@ class NewScreen extends React.Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <Image
-          style={{ height: 100, width: 200 }}
-          source={require("./logo.png")}
-        />
-        <View>
-          <Text style={styles.header}>New Song</Text>
-          <ScrollView>
+      <ScrollView>
+        <View style={styles.container}>
+          <Image
+            style={{ height: 100, width: 200 }}
+            source={require("./logo.png")}
+          />
+          <View>
+            <Text style={styles.header}>New Song</Text>
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
@@ -109,9 +109,9 @@ class NewScreen extends React.Component {
                 <Text style={styles.saveButtonText}>Save</Text>
               </TouchableOpacity>
             </View>
-          </ScrollView>
+          </View>
         </View>
-      </View>
+      </ScrollView>
     );
   }
 }
