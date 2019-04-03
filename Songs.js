@@ -17,6 +17,8 @@ class SongsScreen extends React.Component {
       songs: ""
     };
     this.getSongs = this.getSongs.bind(this);
+    this.upVote = this.upVote.bind(this);
+    this.downVote = this.downVote.bind(this);
   }
 
   componentDidMount() {
@@ -36,6 +38,42 @@ class SongsScreen extends React.Component {
       });
   }
 
+  upVote(e) {
+    console.log(e);
+    const data = { body: e };
+    fetch("http://konjomusicbackend.herokuapp.com/votes/upvote", {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => console.log(response))
+      .then(result => {
+        console.log(result);
+        this.getSongs();
+        Vibration.vibrate();
+      });
+  }
+
+  downVote(e) {
+    console.log(e);
+    const data = { body: e };
+    fetch("http://konjomusicbackend.herokuapp.com/votes/downvote", {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json"
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => console.log(response))
+      .then(result => {
+        console.log(result);
+        this.getSongs();
+        Vibration.vibrate();
+      });
+  }
+
   render() {
     let songs;
     this.state.songs &&
@@ -48,7 +86,14 @@ class SongsScreen extends React.Component {
               this.props.navigation.navigate("Song", { songId: `${song._id}` })
             }
           >
-            <Text style={styles.songButtonText}>{song.title}</Text>
+            <Text style={styles.songButtonText}>
+              {song.title} -- Votes: {song.votes}
+            </Text>
+            <Button title="Upvote" onPress={() => this.upVote(`${song._id}`)} />
+            <Button
+              title="Downvote"
+              onPress={() => this.downVote(`${song._id}`)}
+            />
           </TouchableOpacity>
         );
       }));
