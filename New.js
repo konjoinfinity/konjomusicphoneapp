@@ -7,7 +7,8 @@ import {
   ScrollView,
   TextInput,
   Keyboard,
-  TouchableOpacity
+  TouchableOpacity,
+  Vibration
 } from "react-native";
 import { Card } from "react-native-elements";
 
@@ -50,6 +51,7 @@ class NewScreen extends React.Component {
       body: JSON.stringify(data)
     });
     this.props.navigation.navigate("Songs");
+    Vibration.vibrate();
   }
 
   render() {

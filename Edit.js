@@ -7,7 +7,8 @@ import {
   ScrollView,
   TextInput,
   Keyboard,
-  TouchableOpacity
+  TouchableOpacity,
+  Vibration
 } from "react-native";
 import { Card } from "react-native-elements";
 
@@ -45,6 +46,7 @@ class EditScreen extends React.Component {
           lyrics: res.lyrics
         });
       });
+    Vibration.vibrate();
   }
 
   handleTitleChange(title) {
@@ -73,6 +75,7 @@ class EditScreen extends React.Component {
       .then(result => {
         console.log(result);
         this.props.navigation.navigate("Songs");
+        Vibration.vibrate();
       });
   }
 

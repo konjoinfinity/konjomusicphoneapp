@@ -8,7 +8,8 @@ import {
   Image,
   ScrollView,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Vibration
 } from "react-native";
 import { Card } from "react-native-elements";
 
@@ -30,6 +31,7 @@ class SongScreen extends React.Component {
   }
 
   componentDidMount() {
+    Vibration.vibrate();
     fetch(
       `http://konjomusicbackend.herokuapp.com/songs/${
         this.props.navigation.state.params.songId
@@ -58,7 +60,8 @@ class SongScreen extends React.Component {
     )
       .then(res => res.json())
       .then(res => console.log(res))
-      .then(this.props.navigation.navigate("Home"));
+      .then(this.props.navigation.navigate("Home"))
+      .then(Vibration.vibrate());
   }
 
   deleteComment(e) {
@@ -80,6 +83,7 @@ class SongScreen extends React.Component {
       .then(result => {
         console.log(result);
         this.getSong();
+        Vibration.vibrate();
       });
   }
 
@@ -101,6 +105,7 @@ class SongScreen extends React.Component {
       .then(result => {
         console.log(result);
         this.getSong();
+        Vibration.vibrate();
       });
   }
 

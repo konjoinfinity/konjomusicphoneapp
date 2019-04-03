@@ -6,7 +6,8 @@ import {
   Image,
   ScrollView,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Vibration
 } from "react-native";
 
 class SongsScreen extends React.Component {
@@ -24,6 +25,7 @@ class SongsScreen extends React.Component {
       .then(res => {
         this.setState({ songs: res });
       });
+    Vibration.vibrate();
   }
 
   getSongs() {

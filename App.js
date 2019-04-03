@@ -6,7 +6,8 @@ import {
   Image,
   ScrollView,
   StyleSheet,
-  TouchableOpacity
+  TouchableOpacity,
+  Vibration
 } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 import SongsScreen from "./Songs";
@@ -15,6 +16,11 @@ import NewScreen from "./New";
 import EditScreen from "./Edit";
 
 class HomeScreen extends React.Component {
+  navNew() {
+    this.props.navigation.navigate("New");
+    Vibration.vibrate();
+  }
+
   render() {
     return (
       <View style={{ flex: 2, alignItems: "center", justifyContent: "center" }}>
@@ -32,7 +38,7 @@ class HomeScreen extends React.Component {
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.newButton}
-          onPress={() => this.props.navigation.navigate("New")}
+          onPress={() => this.navNew()}
         >
           <Text style={styles.newButtonText}>New Song</Text>
         </TouchableOpacity>
