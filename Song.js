@@ -131,27 +131,39 @@ class SongScreen extends React.Component {
             style={{ height: 100, width: 200 }}
             source={require("./logo.png")}
           />
-          <Card>
-            <Text style={{ fontSize: 50, padding: 20 }}>
-              Title - {this.state.song.title}
+          <Card borderRadius={15}>
+            <Text style={{ fontSize: 35, padding: 10, fontWeight: "bold" }}>
+              Title
+            </Text>
+            <Text style={{ fontSize: 30, padding: 10 }}>
+              {this.state.song.title}
             </Text>
           </Card>
-          <Card>
-            <Text style={{ fontSize: 45, padding: 20 }}>
-              Author - {this.state.song.author}
+          <Card borderRadius={15}>
+            <Text style={{ fontSize: 35, padding: 10, fontWeight: "bold" }}>
+              Author
+            </Text>
+            <Text style={{ fontSize: 30, padding: 10 }}>
+              {this.state.song.author}
             </Text>
           </Card>
-          <Card>
-            <Text style={{ fontSize: 40, padding: 20 }}>
-              Notes - {this.state.song.notes}
+          <Card borderRadius={15}>
+            <Text style={{ fontSize: 35, padding: 10, fontWeight: "bold" }}>
+              Notes
+            </Text>
+            <Text style={{ fontSize: 30, padding: 10 }}>
+              {this.state.song.notes}
             </Text>
           </Card>
-          <Card>
-            <Text style={{ fontSize: 40, padding: 20 }}>
-              Lyrics - {this.state.song.lyrics}
+          <Card borderRadius={15}>
+            <Text style={{ fontSize: 35, padding: 10, fontWeight: "bold" }}>
+              Lyrics
+            </Text>
+            <Text style={{ fontSize: 30, padding: 10 }}>
+              {this.state.song.lyrics}
             </Text>
           </Card>
-          <Card>
+          <Card borderRadius={15}>
             <TouchableOpacity
               style={styles.songButton}
               onPress={() => this.props.navigation.navigate("Songs")}
@@ -175,7 +187,7 @@ class SongScreen extends React.Component {
               <Text style={styles.deleteButtonText}>Delete Song</Text>
             </TouchableOpacity>
           </Card>
-          <Card>
+          <Card borderRadius={15}>
             <View style={styles.inputContainer}>
               <TextInput
                 style={styles.textInput}
@@ -194,8 +206,10 @@ class SongScreen extends React.Component {
               </TouchableOpacity>
             </View>
           </Card>
-          <Text style={{ fontSize: 40, padding: 20 }}>Comments</Text>
-          <Card>{commentlist}</Card>
+          <Text style={{ fontSize: 35, padding: 20, fontWeight: "bold" }}>
+            Comments
+          </Text>
+          <Card borderRadius={15}>{commentlist}</Card>
         </ScrollView>
       </View>
     );
@@ -212,14 +226,16 @@ const styles = StyleSheet.create({
     height: 50,
     fontSize: 25,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    borderRadius: 15
   },
   deleteButton: {
     borderWidth: 1,
     borderColor: "#FF1717",
     backgroundColor: "#FF1717",
     padding: 15,
-    margin: 5
+    margin: 5,
+    borderRadius: 15
   },
   deleteButtonText: {
     color: "#FFFFFF",
@@ -231,7 +247,8 @@ const styles = StyleSheet.create({
     borderColor: "#007BFF",
     backgroundColor: "#007BFF",
     padding: 15,
-    margin: 5
+    margin: 5,
+    borderRadius: 15
   },
   songButtonText: {
     color: "#FFFFFF",
@@ -248,7 +265,8 @@ const styles = StyleSheet.create({
     borderColor: "#FFD517",
     backgroundColor: "#FFD517",
     padding: 15,
-    margin: 5
+    margin: 5,
+    borderRadius: 15
   },
   editButtonText: {
     color: "#FFFFFF",
@@ -260,14 +278,16 @@ const styles = StyleSheet.create({
     borderColor: "#FFB944",
     backgroundColor: "#FFB944",
     padding: 15,
-    margin: 5
+    margin: 5,
+    borderRadius: 15
   },
   saveButton: {
     borderWidth: 1,
     borderColor: "#12C16D",
     backgroundColor: "#12C16D",
     padding: 15,
-    margin: 5
+    margin: 5,
+    borderRadius: 15
   },
   saveButtonText: {
     color: "#FFFFFF",

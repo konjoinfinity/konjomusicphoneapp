@@ -86,14 +86,20 @@ class SongsScreen extends React.Component {
               this.props.navigation.navigate("Song", { songId: `${song._id}` })
             }
           >
-            <Text style={styles.songButtonText}>
-              {song.title} -- Votes: {song.votes}
-            </Text>
-            <Button title="Upvote" onPress={() => this.upVote(`${song._id}`)} />
-            <Button
-              title="Downvote"
+            <Text style={styles.songButtonText}>{song.title}</Text>
+            <Text style={styles.songButtonText}>Votes: {song.votes}</Text>
+            <TouchableOpacity
+              style={styles.upButton}
+              onPress={() => this.upVote(`${song._id}`)}
+            >
+              <Text style={styles.upButtonText}>Upvote ⬆️</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.downButton}
               onPress={() => this.downVote(`${song._id}`)}
-            />
+            >
+              <Text style={styles.downButtonText}>Downvote ⬇️</Text>
+            </TouchableOpacity>
           </TouchableOpacity>
         );
       }));
@@ -120,7 +126,8 @@ const styles = StyleSheet.create({
     borderColor: "#12C16D",
     backgroundColor: "#12C16D",
     padding: 15,
-    margin: 5
+    margin: 5,
+    borderRadius: 15
   },
   songButtonText: {
     color: "#FFFFFF",
@@ -131,6 +138,32 @@ const styles = StyleSheet.create({
     flex: 2,
     alignItems: "center",
     justifyContent: "center"
+  },
+  downButton: {
+    borderWidth: 0,
+    borderColor: "#FFD517",
+    backgroundColor: "#FFD517",
+    padding: 10,
+    margin: 5,
+    borderRadius: 15
+  },
+  downButtonText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    textAlign: "center"
+  },
+  upButton: {
+    borderWidth: 0,
+    borderColor: "#007BFF",
+    backgroundColor: "#007BFF",
+    padding: 10,
+    margin: 5,
+    borderRadius: 15
+  },
+  upButtonText: {
+    color: "#FFFFFF",
+    fontSize: 20,
+    textAlign: "center"
   }
 });
 

@@ -53,7 +53,8 @@ const styles = StyleSheet.create({
     borderColor: "#007BFF",
     backgroundColor: "#007BFF",
     padding: 15,
-    margin: 5
+    margin: 5,
+    borderRadius: 15
   },
   songButtonText: {
     color: "#FFFFFF",
@@ -65,7 +66,8 @@ const styles = StyleSheet.create({
     borderColor: "#12C16D",
     backgroundColor: "#12C16D",
     padding: 15,
-    margin: 5
+    margin: 5,
+    borderRadius: 15
   },
   newButtonText: {
     color: "#FFFFFF",

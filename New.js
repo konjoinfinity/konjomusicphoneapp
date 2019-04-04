@@ -63,7 +63,7 @@ class NewScreen extends React.Component {
             source={require("./logo.png")}
           />
           <View>
-            <Card>
+            <Card borderRadius={15}>
               <Text style={styles.header}>New Song</Text>
               <View style={styles.inputContainer}>
                 <TextInput
@@ -141,14 +141,16 @@ const styles = StyleSheet.create({
     height: 50,
     fontSize: 25,
     paddingLeft: 20,
-    paddingRight: 20
+    paddingRight: 20,
+    borderRadius: 15
   },
   saveButton: {
     borderWidth: 1,
     borderColor: "#007BFF",
     backgroundColor: "#007BFF",
     padding: 15,
-    margin: 5
+    margin: 5,
+    borderRadius: 15
   },
   saveButtonText: {
     color: "#FFFFFF",
